@@ -3,7 +3,7 @@ module github.com/willscott/go-nfs
 go 1.19
 
 require (
-	github.com/CalebQ42/squashfs v1.0.5
+	github.com/CalebQ42/squashfs v1.0.6
 	github.com/go-git/go-billy/v5 v5.6.0
 	github.com/google/uuid v1.6.0
 	github.com/hashicorp/golang-lru/v2 v2.0.7

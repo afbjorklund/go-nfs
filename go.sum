@@ -1,5 +1,5 @@
-github.com/CalebQ42/squashfs v1.0.5 h1:1hvd9cH1P4axdJvoLsDQBUT8itbHcu6hiZSo3vCxocg=
-github.com/CalebQ42/squashfs v1.0.5/go.mod h1:48nUwPN4mjeWhu3It2LJZAq4EkixbzY4pdyZ7gEfHb8=
+github.com/CalebQ42/squashfs v1.0.6 h1:/i/+5gJP0Fa6OlLdRfrq60a7a1TNiAHtiPaUMKAVtbc=
+github.com/CalebQ42/squashfs v1.0.6/go.mod h1:48nUwPN4mjeWhu3It2LJZAq4EkixbzY4pdyZ7gEfHb8=
 github.com/cyphar/filepath-securejoin v0.2.5 h1:6iR5tXJ/e6tJZzzdMc1km3Sa7RRIVBKAK32O2s7AYfo=
 github.com/cyphar/filepath-securejoin v0.2.5/go.mod h1:aPGpWjXOXUn2NCNjFvBE6aRxGGx79pTxQpKOJNYHHl4=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
