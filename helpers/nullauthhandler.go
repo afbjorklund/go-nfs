@@ -20,6 +20,7 @@ type NullAuthHandler struct {
 
 // Mount backs Mount RPC Requests, allowing for access control policies.
 func (h *NullAuthHandler) Mount(ctx context.Context, conn net.Conn, req nfs.MountRequest) (status nfs.MountStatus, hndl billy.Filesystem, auths []nfs.AuthFlavor) {
+	_ = req.Dirpath
 	status = nfs.MountStatusOk
 	hndl = h.fs
 	auths = []nfs.AuthFlavor{nfs.AuthFlavorNull}
@@ -32,6 +33,12 @@ func (h *NullAuthHandler) Change(fs billy.Filesystem) billy.Change {
 		return c
 	}
 	return nil
+}
+
+// List of all exported file systems.
+func (h *NullAuthHandler) Export(context.Context) []nfs.Export {
+	groups := []nfs.Group{{Name: []byte("anonymous")}}
+	return []nfs.Export{{Dir: []byte("/mount"), Groups: groups}}
 }
 
 // FSStat provides information about a filesystem.
