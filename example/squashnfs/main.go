@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net"
 	"os"
+	"strconv"
 
 	"github.com/go-git/go-billy/v5"
 	squashfs "github.com/willscott/go-nfs/helpers/squashfs"
@@ -28,11 +29,15 @@ func (ROFS) Capabilities() billy.Capability {
 
 func main() {
 	port := ""
+	offset := int64(0)
 	if len(os.Args) < 2 {
-		fmt.Printf("Usage: squashnfs </path/to/squashfs> [port]\n")
+		fmt.Printf("Usage: squashnfs </path/to/squashfs> [port] [offset]\n")
 		return
-	} else if len(os.Args) == 3 {
+	} else if len(os.Args) >= 3 {
 		port = os.Args[2]
+		if len(os.Args) == 4 {
+			offset, _ = strconv.ParseInt(os.Args[3], 10, 64)
+		}
 	}
 
 	listener, err := net.Listen("tcp", ":"+port)
@@ -47,7 +52,7 @@ func main() {
 		fmt.Printf("Failed to open: %v\n", err)
 		return
 	}
-	bfs := squashfs.New(f)
+	bfs := squashfs.New(f, offset)
 
 	handler := nfshelper.NewNullAuthHandler(ROFS{bfs})
 	cacheHelper := nfshelper.NewCachingHandler(handler, 1024)

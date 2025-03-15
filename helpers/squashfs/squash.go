@@ -24,8 +24,8 @@ type Squash struct {
 	underlying *squashfs.Reader
 }
 
-func New(f io.ReaderAt) billy.Filesystem {
-	r, err := squashfs.NewReader(f)
+func New(f io.ReaderAt, o int64) billy.Filesystem {
+	r, err := squashfs.NewReaderAtOffset(f, o)
 	if err != nil {
 		log.Printf("failed to read squashfs: %v", err)
 	}
